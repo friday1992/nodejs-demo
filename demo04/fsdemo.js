@@ -1,5 +1,5 @@
 var fs = require('fs')
-fs.stat('fs', (error, stats) => {
+fs.stat('demo04', (error, stats) => {
     if (error) {
         console.log(error)
     } else {
@@ -10,7 +10,7 @@ fs.stat('fs', (error, stats) => {
 })
 //创建目录
 // fs.mkdir('css')
-fs.writeFile("t.text", "写入成功", (error => {
+fs.writeFile("t.text", "写入成功111", (error => {
     if (error) {
         console.log(error)
     } else {
@@ -38,6 +38,6 @@ fs.readdir('node_modules', (error, data) => {
     if (error) {
         console.log(error)
     } else {
-        console.log(data.length)
+        console.log(data)
     }
 })

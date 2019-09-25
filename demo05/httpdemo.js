@@ -20,7 +20,6 @@ http.createServer(function (req, res) {
                     res.write(data)
                     res.end()
                 })
-
             } else {
                 //获取后缀名
                 var content = exuitl2(pathName)
