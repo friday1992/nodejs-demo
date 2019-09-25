@@ -1,5 +1,4 @@
 # nodejs-demo
-my record of learn nodejs  
 1.一个简单的Hello World nodejs程序
 ```
 var http = require('http');
@@ -15,3 +14,9 @@ http.createServer(function(req,res){
     res.end()
 }).listen(8001)
 ```
+使用supervisor来启动服务
+```
+npm -g install supervisor
+supervisor app.js
+```
+
