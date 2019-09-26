@@ -6,7 +6,7 @@ resdstream.on('data', function (chunk) {
     console.log("开始读取")
     str += chunk
 })
-resdstream.on('end', function (chunk) {
+resdstream.on('end', function () {
     console.log("读取结束")
     console.log(str)
 })
