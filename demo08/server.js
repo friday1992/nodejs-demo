@@ -2,6 +2,10 @@
 var http = require('http')
 var ejs = require('ejs')
 var url = require('url')
+var dbreturn = require('../demo11/server.js')
+
+
+
 
 //引入封装的路由
 var staticrouter = require('../model/router.js')
@@ -13,7 +17,10 @@ http.createServer(function (req, res) {
     if (pathname == '/login') {
         var data = '我是后台数据'
         var list = [11, 22, 33]
-        ejs.renderFile('views/login.ejs', { msg: data, list: list }, (err, result) => {
+        var data = dbreturn();
+
+        console.log(data)
+        ejs.renderFile('views/login.ejs', { msg: data, list: list, data: data }, (err, result) => {
             if (err) {
                 console.log(err)
             }
