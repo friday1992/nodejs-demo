@@ -13,25 +13,29 @@ const client = new MongoClient(url);
 
 // Use connect method to connect to the Server
 var dbclient = function () {
-    var data = []
-    client.connect(function (err) {
-        assert.equal(null, err);
-        console.log("Connected successfully to server");
+    return new Promise((resolve, reject) => {
+        var data = []
+        client.connect(function (err) {
+            assert.equal(null, err);
+            console.log("Connected successfully to server");
 
-        const db = client.db(dbName);
-        // insertDocuments(db, (result) => {
-        //     console.log(result)
-        // })
+            const db = client.db(dbName);
+            // insertDocuments(db, (result) => {
+            //     console.log(result)
+            // })
 
-        findDocuments(db, (result) => {
-            console.log(result)
-            data = result
-        })
+            findDocuments(db, (result) => {
+                data = result
+                // console.log(result)
+                // client.close()
+                resolve(data)
+            })
 
-        client.close();
 
-    });
-    return data;
+        });
+    })
+
+
 }
 
 const insertDocuments = function (db, callback) {

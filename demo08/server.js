@@ -13,19 +13,20 @@ http.createServer(function (req, res) {
     var pathname = url.parse(req.url).pathname
     var methods = req.method.toLowerCase()
     console.log(pathname)
+
     res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' })
     if (pathname == '/login') {
-        var data = '我是后台数据'
         var list = [11, 22, 33]
-        var data = dbreturn();
-
-        console.log(data)
-        ejs.renderFile('views/login.ejs', { msg: data, list: list, data: data }, (err, result) => {
-            if (err) {
-                console.log(err)
-            }
-            res.write(result)
-            res.end()
+        dbreturn().then((data) => {
+            console.log(11)
+            console.log(data)
+            ejs.renderFile('views/login.ejs', { msg: data, list: list, data: data }, (err, result) => {
+                if (err) {
+                    console.log(err)
+                }
+                res.write(result)
+                res.end()
+            })
         })
     } else if (pathname == '/dologin' && methods == 'get') {
         //
@@ -40,4 +41,6 @@ http.createServer(function (req, res) {
             res.end(str)
         })
     }
+
+
 }).listen(8002)

@@ -10,7 +10,7 @@
 
 <body>
     woshi登陆页
-    <h2><%= msg %></h2>
+    <h2><%- JSON.stringify(msg) %></h2>
     <ul>
         <%for(var i =0;i<list.length;i++){  %>
         <li><%=list[i]%></li>
@@ -19,9 +19,9 @@
     <br>
     <h2>数据库返回数据</h2>
     <ul>
-        <%for(let i = 0;i<data.length;i++){%>
+        <%for(var i =0;i<data.length;i++){  %>
         <li><%=data[i].a%></li>
-        <%}%>
+        <%  }  %>
     </ul>
     <form action="/dologin" method="POST">
         <input type="text" name="usrname">
@@ -29,5 +29,9 @@
         <input type="submit" value="提交">
     </form>
 </body>
+<script>
+    console.log(JSON.parse('<%- JSON.stringify(data) %>'));
+
+</script>
 
 </html>
